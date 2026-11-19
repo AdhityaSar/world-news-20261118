@@ -1,211 +1,471 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>The World — 18 November 2026</title>
+<title>The World — Wednesday 18 November 2026</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { width:1024px; height:1024px; }
-  body {
-    background:#efece3;
-    color:#14120e;
-    font-family:Georgia, "Times New Roman", serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  .page {
-    width:1024px; height:1024px; overflow:hidden;
-    background:#efece3;
-  }
-  .sheet {
-    display:flex; flex-direction:column;
-    width:1024px; height:1024px;
-    padding:22px 30px 16px;
-  }
+    /* One day, one sheet: cream stock, ink type, a single red for labels.
+       1024 x 1024 with no scroll, because the frame is the whole artefact. */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html,
+    body {
+        width: 1024px;
+        height: 1024px;
+        overflow: hidden;
+        background: #f1eee5;
+        color: #16130f;
+        font-family: Georgia, "Times New Roman", serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    .sheet {
+        width: 1024px;
+        height: 1024px;
+        padding: 20px 28px 14px;
+        display: flex;
+        flex-direction: column;
+    }
 
-  /* ---------- masthead ---------- */
-  .mast {
-    display:flex; align-items:baseline; justify-content:space-between;
-  }
-  .brand-name {
-    font-weight:700; font-size:24px; line-height:1;
-    letter-spacing:.36em;
-  }
-  .brand-sub {
-    font-weight:400; font-size:13px; line-height:1;
-    letter-spacing:.24em; color:#756c5b;
-    margin-top:9px;
-  }
-  .dateblock { text-align:right; }
-  .dow {
-    font-weight:700; font-size:15px; line-height:1;
-    letter-spacing:.32em; color:#9c2b18; text-transform:uppercase;
-  }
-  .dnum {
-    font-weight:700; font-size:74px; line-height:.92;
-    letter-spacing:-.035em; margin-top:8px;
-  }
-  .dyear {
-    font-weight:400; font-size:19px; line-height:1;
-    letter-spacing:.4em; color:#756c5b; margin-top:6px;
-  }
-  .rule5 { height:5px; background:#14120e; margin:12px 0 0; }
+    /* ---------------------------------------------------------------- masthead
+       Flag on the left, the day on the right. The date is the largest thing
+       above the fold after the lead, so nobody can miss which day this is. */
+    .masthead {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .flag {
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 1;
+        letter-spacing: 0.36em;
+        text-transform: uppercase;
+    }
+    .flag .sub {
+        display: block;
+        margin-top: 6px;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 1;
+        letter-spacing: 0.23em;
+        color: #7a7160;
+    }
+    .dayblock {
+        text-align: right;
+    }
+    .dayblock .weekday {
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 0.30em;
+        text-transform: uppercase;
+        color: #a02a16;
+    }
+    .dayblock .bigday {
+        margin-top: 3px;
+        font-weight: 700;
+        font-size: 72px;
+        line-height: 0.92;
+        letter-spacing: -0.035em;
+    }
+    .dayblock .year {
+        margin-top: 4px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1;
+        letter-spacing: 0.38em;
+        color: #7a7160;
+    }
 
-  /* ---------- lead ---------- */
-  .lead { padding:13px 0 11px; }
-  .kicker {
-    font-weight:700; font-size:13px; line-height:1;
-    letter-spacing:.2em; text-transform:uppercase; color:#9c2b18;
-  }
-  h1 {
-    font-weight:700; font-size:68px; line-height:.99;
-    letter-spacing:-.02em; margin:10px 0 0;
-  }
-  h1 em { font-style:italic; font-weight:400; }
-  .deck {
-    font-size:19px; line-height:1.4; color:#2c281f;
-    margin:11px 0 0; max-width:940px;
-  }
-  .rule3 { height:3px; background:#14120e; }
+    /* ------------------------------------------------------------------- lead
+       The day's lead is reversed out of the paper: black field, cream type.
+       Beside it, four figures from four other stories, for scale. */
+    .lead {
+        margin-top: 9px;
+        padding: 12px 18px 13px;
+        background: #16130f;
+        color: #f4f1e8;
+        display: grid;
+        grid-template-columns: 1fr 178px;
+        gap: 16px;
+    }
+    .kicker {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 1;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #e2603f;
+    }
+    .lead h1 {
+        margin-top: 6px;
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 1.02;
+        letter-spacing: -0.026em;
+    }
+    .lead h1 em {
+        font-style: italic;
+        font-weight: 400;
+    }
+    .lead .standfirst {
+        margin-top: 7px;
+        max-width: 620px;
+        font-weight: 400;
+        font-size: 13.6px;
+        line-height: 1.34;
+        color: #cfc8bb;
+    }
+    .lead .standfirst b {
+        font-weight: 700;
+        color: #f4f1e8;
+    }
+    .figures {
+        padding-left: 14px;
+        border-left: 1px solid #4a4438;
+    }
+    .figures h2 {
+        margin-bottom: 7px;
+        font-weight: 700;
+        font-size: 9px;
+        line-height: 1;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #e2603f;
+    }
+    .figures .num {
+        font-weight: 700;
+        font-size: 23px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: #f4f1e8;
+    }
+    .figures .cap {
+        margin: 3px 0 10px;
+        font-weight: 400;
+        font-size: 10.5px;
+        line-height: 1.25;
+        color: #b3ab9c;
+    }
 
-  /* ---------- numbers ---------- */
-  .nums { display:flex; padding:10px 0 10px; }
-  .num { flex:1; padding-right:12px; }
-  .num + .num { border-left:1px solid #14120e; padding-left:14px; }
-  .fig { font-weight:700; font-size:36px; line-height:1; letter-spacing:-.02em; }
-  .lab { font-weight:400; font-size:13px; line-height:1.3; color:#4c4538; margin-top:6px; }
+    /* ----------------------------------------------------------- figures strip
+       Six numbers, six stories, no commentary: the day's arithmetic. */
+    .strip {
+        display: flex;
+        border-bottom: 3px solid #16130f;
+    }
+    .strip .cell {
+        flex: 1;
+        padding: 9px 11px 9px 0;
+    }
+    .strip .cell + .cell {
+        padding-left: 12px;
+        border-left: 1px solid #c8c0ac;
+    }
+    .strip .num {
+        font-weight: 700;
+        font-size: 27px;
+        line-height: 1;
+        letter-spacing: -0.035em;
+    }
+    .strip .cap {
+        margin-top: 4px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.26;
+        color: #4e4739;
+    }
 
-  /* ---------- columns ---------- */
-  .grid {
-    display:grid; grid-template-columns:1fr 1fr 1fr; gap:0 22px;
-    padding:12px 0 0;
-  }
-  .col + .col { border-left:1px solid #14120e; padding-left:22px; }
-  .item { margin-bottom:13px; }
-  .region {
-    font-weight:700; font-size:13px; line-height:1;
-    letter-spacing:.22em; text-transform:uppercase; color:#9c2b18;
-  }
-  h3 {
-    font-weight:700; font-size:28px; line-height:1.08;
-    letter-spacing:-.024em; margin:6px 0 0;
-  }
-  .copy { font-weight:400; font-size:15px; line-height:1.33; color:#3b3529; margin-top:5px; }
+    /* ---------------------------------------------------------------- the grid
+       Four columns, region heads in red. One story to a line of bold type,
+       one line of fact under it, nothing else. */
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 0 15px;
+        padding-top: 8px;
+    }
+    .col + .col {
+        padding-left: 15px;
+        border-left: 1px solid #c8c0ac;
+    }
+    .block {
+        margin-bottom: 7px;
+    }
+    .block h3 {
+        margin-bottom: 5px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #d8d1c0;
+        font-weight: 700;
+        font-size: 11px;
+        line-height: 1;
+        letter-spacing: 0.19em;
+        text-transform: uppercase;
+        color: #a02a16;
+    }
+    .story {
+        margin-bottom: 5px;
+    }
+    .story .head {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 1.12;
+        letter-spacing: -0.005em;
+    }
+    .story .note {
+        margin-top: 1px;
+        font-weight: 400;
+        font-size: 10.1px;
+        line-height: 1.25;
+        color: #46402f;
+    }
+    .story .note b {
+        font-weight: 700;
+        color: #16130f;
+    }
 
-  /* ---------- footer ---------- */
-  .foot {
-    margin-top:auto; border-top:3px solid #14120e;
-    padding-top:8px;
-    display:flex; justify-content:space-between; align-items:baseline;
-    font-weight:400; font-size:13px; line-height:1;
-    letter-spacing:.17em; text-transform:uppercase;
-  }
-  .foot .mark { color:#9c2b18; }
+    /* --------------------------------------------------------------- also strip
+       Four one-line teasers for the beats that live outside the map. */
+    .also {
+        display: flex;
+        gap: 13px;
+        margin-top: 2px;
+        padding-top: 6px;
+        border-top: 1px solid #c8c0ac;
+    }
+    .also .beat {
+        flex: 1;
+    }
+    .also .label {
+        font-weight: 700;
+        font-size: 8.5px;
+        line-height: 1;
+        letter-spacing: 0.20em;
+        text-transform: uppercase;
+        color: #a02a16;
+    }
+    .also .teaser {
+        margin-top: 2px;
+        font-weight: 700;
+        font-size: 13.5px;
+        line-height: 1.2;
+    }
+
+    /* ------------------------------------------------------------------ footer */
+    .foot {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6px;
+        padding-top: 5px;
+        border-top: 3px solid #16130f;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 1;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #4e4739;
+    }
+    .foot .mark {
+        font-weight: 700;
+        color: #a02a16;
+    }
 </style>
 </head>
 <body>
-<div class="page">
+
 <div class="sheet">
 
-  <div class="mast">
-    <div>
-      <div class="brand-name">THE WORLD</div>
-      <div class="brand-sub">all regions &middot; one day</div>
-    </div>
-    <div class="dateblock">
-      <div class="dow">Wednesday</div>
-      <div class="dnum">18 November</div>
-      <div class="dyear">2026</div>
-    </div>
-  </div>
-  <div class="rule5"></div>
+    <header class="masthead">
+        <div class="flag">
+            The World
+            <span class="sub">7 regions &middot; 24 stories &middot; one page</span>
+        </div>
+        <div class="dayblock">
+            <div class="weekday">Wednesday</div>
+            <div class="bigday">18 November</div>
+            <div class="year">2026</div>
+        </div>
+    </header>
 
-  <div class="lead">
-    <div class="kicker">Asia-Pacific &middot; APEC Leaders&rsquo; Meeting, Shenzhen</div>
-    <h1>Xi welcomes Trump to China, <em>and Putin sits beside them</em></h1>
-    <p class="deck">Trump landed at Shenzhen on Wednesday and joined Xi Jinping and Vladimir Putin for the APEC banquet that evening. No G7 leader took the opening stage.</p>
-  </div>
-  <div class="rule3"></div>
+    <section class="lead">
+        <div>
+            <div class="kicker">Middle East &middot; Strait of Hormuz</div>
+            <h1>Iran strikes Kuwait and Bahrain, <em>after US jets bomb Qeshm</em></h1>
+            <p class="standfirst">Iranian drones targeted the US&rsquo;s <b>Ali Al-Salem air base</b> in Kuwait, and Bahrain said it fended off a fourth attack in six days, after American aircraft struck a missile site on <b>Qeshm Island</b>. Saudi Arabia intercepted a Houthi cruise missile bound for Riyadh; an <b>ADNOC</b> tanker was hit. Qatar called it a dangerous escalation.</p>
+        </div>
+        <div class="figures">
+            <h2>The day in numbers</h2>
+            <div class="num">$115.8bn</div>
+            <div class="cap">Nvidia&rsquo;s quarter, up 103% as Huang&rsquo;s board rules out his return</div>
+            <div class="num">$81.3bn</div>
+            <div class="cap">raised by Anthropic&rsquo;s IPO at $83, the largest debut</div>
+            <div class="num">&euro;45bn</div>
+            <div class="cap">joint-debt loan proposed for Kyiv</div>
+            <div class="num">251&ndash;11</div>
+            <div class="cap">Jeffries wins the Democratic caucus</div>
+        </div>
+    </section>
 
-  <div class="nums">
-    <div class="num">
-      <div class="fig">$115.8bn</div>
-      <div class="lab">Nvidia&rsquo;s quarter, up 103% &mdash; its first without Jensen Huang</div>
+    <div class="strip">
+        <div class="cell">
+            <div class="num">$190.4m</div>
+            <div class="cap">a Van Gogh record at Sotheby&rsquo;s</div>
+        </div>
+        <div class="cell">
+            <div class="num">1 light-day</div>
+            <div class="cap">Voyager 1&rsquo;s distance from Earth</div>
+        </div>
+        <div class="cell">
+            <div class="num">৳30,000</div>
+            <div class="cap">the wage Dhaka&rsquo;s garment workers demand</div>
+        </div>
+        <div class="cell">
+            <div class="num">3.6%</div>
+            <div class="cap">UK inflation, a one-year high</div>
+        </div>
+        <div class="cell">
+            <div class="num">15m</div>
+            <div class="cap">files Deutsche Bank leaked</div>
+        </div>
+        <div class="cell">
+            <div class="num">55</div>
+            <div class="cap">factories shut in the Dhaka belt</div>
+        </div>
     </div>
-    <div class="num">
-      <div class="fig">$81.3bn</div>
-      <div class="lab">raised by Anthropic&rsquo;s IPO at $83 a share</div>
-    </div>
-    <div class="num">
-      <div class="fig">1 light-day</div>
-      <div class="lab">Voyager 1&rsquo;s distance, a first for any object</div>
-    </div>
-    <div class="num">
-      <div class="fig">$190.4m</div>
-      <div class="lab">a Van Gogh record at Sotheby&rsquo;s</div>
-    </div>
-  </div>
-  <div class="rule3"></div>
 
-  <div class="grid">
-    <div class="col">
-      <div class="item">
-        <div class="region">Ukraine</div>
-        <h3>Kerch Bridge struck a third time</h3>
-        <div class="copy">Rail halted, road already down: three attacks in four days.</div>
-      </div>
-      <div class="item">
-        <div class="region">Gaza</div>
-        <h3>Central Gaza raid, a first since the truce</h3>
-        <div class="copy">Families displaced as the army moves in.</div>
-      </div>
-      <div class="item">
-        <div class="region">West Bank</div>
-        <h3>Settlers kill a grandmother, 72</h3>
-        <div class="copy">Britain sanctioned 8 settler builders.</div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="item">
-        <div class="region">Venezuela</div>
-        <h3>Hegseth signs a military pact</h3>
-        <div class="copy">Joint training and intelligence sharing with Caracas.</div>
-      </div>
-      <div class="item">
-        <div class="region">Bangladesh</div>
-        <h3>Garment workers shut the highway</h3>
-        <div class="copy">Thousands demand &#2547;30,000 a month; 55 factories shut.</div>
-      </div>
-      <div class="item">
-        <div class="region">United States</div>
-        <h3>Jeffries moves on the gavel</h3>
-        <div class="copy">251 votes to 11 in the caucus.</div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="item">
-        <div class="region">Climate</div>
-        <h3>COP31 deadlocks over a fuel tax</h3>
-        <div class="copy">Antalya: Britain backs levies on high emitters.</div>
-      </div>
-      <div class="item">
-        <div class="region">Haiti</div>
-        <h3>Bukele bombs a gang leader&rsquo;s home</h3>
-        <div class="copy">Salvadoran forces struck Jeff Larose&rsquo;s mansion.</div>
-      </div>
-      <div class="item">
-        <div class="region">Europe</div>
-        <h3>Deutsche Bank&rsquo;s 15m-file leak probed</h3>
-        <div class="copy">A German regulator opened an inquiry.</div>
-      </div>
-    </div>
-  </div>
+    <div class="grid">
 
-  <div class="foot">
-    <div>18 November 2026 &middot; events as reported that day, in any time zone</div>
-    <div class="mark">make.fun</div>
-  </div>
+        <div class="col">
+            <div class="block">
+                <h3>Middle East</h3>
+                <div class="story">
+                    <div class="head">Israel opens its first central Gaza operation since the truce</div>
+                    <div class="note">Families displaced; a first since October 2025.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Settlers shoot dead a grandmother of 72</div>
+                    <div class="note"><b>Fadda Mohammed Fheidat</b>, outside her home near Jericho. Britain sanctioned 8 Israeli construction firms and a settler group; Australia 3 people and 4 organisations.</div>
+                </div>
+            </div>
+            <div class="block">
+                <h3>South Asia</h3>
+                <div class="story">
+                    <div class="head">Army kills a militant commander at a Kulgam mosque</div>
+                    <div class="note">He had escaped a firefight two days earlier.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Garment workers block the Dhaka&ndash;Mymensingh highway</div>
+                    <div class="note">Tear gas and stun grenades; <b>55</b> factories shut, about <b>300</b> held.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Arson and bombs sweep BNP property across Bangladesh</div>
+                    <div class="note">Two BNP members killed in Narail; a BNP MP&rsquo;s clinic burned in Gopalganj; <b>Muhammad Yunus</b>&rsquo;s ancestral home set alight in Chattogram.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="block">
+                <h3>Asia-Pacific</h3>
+                <div class="story">
+                    <div class="head">Xi welcomes Trump to Shenzhen; Putin joins the banquet</div>
+                    <div class="note">No G7 leader took the opening stage of the APEC CEO summit.</div>
+                </div>
+            </div>
+            <div class="block">
+                <h3>Africa</h3>
+                <div class="story">
+                    <div class="head">ANC postpones its coalition briefing</div>
+                    <div class="note">Called off the night before, citing talks; Nigeria&rsquo;s new High Commissioner <b>Femi Fani-Kayode</b> was handed a d&eacute;marche.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Museveni courts Dangote for an oil refinery</div>
+                    <div class="note">60,000 barrels a day, plus fertiliser and mining, at Entebbe.</div>
+                </div>
+            </div>
+            <div class="block">
+                <h3>Sport</h3>
+                <div class="story">
+                    <div class="head">Litton Das sets a wicketkeeping world record</div>
+                    <div class="note">Six catches and two stumpings in one Test innings, in Johannesburg.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="block">
+                <h3>Europe</h3>
+                <div class="story">
+                    <div class="head">Von der Leyen proposes a &euro;45bn loan for Kyiv</div>
+                    <div class="note">Joint debt, put as the trilateral met.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Kerch Bridge struck a third time in four days</div>
+                    <div class="note">Rail halted; Moscow closed the crossing.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Deutsche Bank&rsquo;s 15-million-file leak is probed</div>
+                    <div class="note">A German state data regulator opened an inquiry.</div>
+                </div>
+                <div class="story">
+                    <div class="head">UK inflation climbs to a one-year high of 3.6%</div>
+                    <div class="note">October&rsquo;s reading, from 3.5%, as petrol and diesel hit records.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="block">
+                <h3>Americas</h3>
+                <div class="story">
+                    <div class="head">Hegseth signs a military pact in Caracas</div>
+                    <div class="note">Training and intelligence, with <b>Delcy Rodr&iacute;guez</b>; a C-130 to Colombia.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Jeffries closes on the speaker&rsquo;s gavel</div>
+                    <div class="note"><b>251</b> votes to <b>11</b> in the Democratic caucus.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Bukele&rsquo;s forces destroy a Haitian gang leader&rsquo;s house</div>
+                    <div class="note"><b>Jeff Larose</b>, of the Taliban gang; thousands marched in the capital.</div>
+                </div>
+                <div class="story">
+                    <div class="head">Mexican forces arrest &ldquo;El Topo&rdquo; in Zapopan</div>
+                    <div class="note">Three gunmen killed; a Los Deltas cell leader held.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="also">
+        <div class="beat">
+            <div class="label">Markets</div>
+            <div class="teaser">Nvidia&rsquo;s first quarter without Huang: revenue doubles</div>
+        </div>
+        <div class="beat">
+            <div class="label">Technology</div>
+            <div class="teaser">PlayStation goes dark on the eve of GTA VI</div>
+        </div>
+        <div class="beat">
+            <div class="label">Climate</div>
+            <div class="teaser">COP31 deadlocks over a tax on fossil fuels</div>
+        </div>
+        <div class="beat">
+            <div class="label">Culture</div>
+            <div class="teaser">A Van Gogh sells for a record $190.4m</div>
+        </div>
+    </div>
+
+    <div class="foot">
+        <div>18 November 2026 &middot; events as reported that day, in any time zone</div>
+        <div class="mark">make.fun</div>
+    </div>
 
 </div>
-</div>
+
 </body>
 </html>
