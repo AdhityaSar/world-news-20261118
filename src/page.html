@@ -4,8 +4,12 @@
 <meta charset="utf-8">
 <title>The World — Wednesday 18 November 2026</title>
 <style>
-    /* One day, one sheet: cream stock, ink type, a single red for labels.
-       1024 x 1024 with no scroll, because the frame is the whole artefact. */
+    /* ------------------------------------------------------------------
+       A single day set as one sheet: navy flag band on top, twelve
+       illustrated cards in four columns, teasers and imprint at the foot.
+       Everything here is drawn by the file itself — type, rules and the
+       twelve pictures — so it renders with no network at all.
+       ------------------------------------------------------------------ */
     * {
         margin: 0;
         padding: 0;
@@ -16,259 +20,270 @@
         width: 1024px;
         height: 1024px;
         overflow: hidden;
-        background: #f1eee5;
-        color: #16130f;
+        background: #f2efe6;
+        color: #141210;
         font-family: Georgia, "Times New Roman", serif;
         -webkit-font-smoothing: antialiased;
     }
     .sheet {
         width: 1024px;
         height: 1024px;
-        padding: 20px 28px 14px;
         display: flex;
         flex-direction: column;
     }
 
-    /* ---------------------------------------------------------------- masthead
-       Flag on the left, the day on the right. The date is the largest thing
-       above the fold after the lead, so nobody can miss which day this is. */
-    .masthead {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-    }
-    .flag {
-        font-weight: 700;
-        font-size: 23px;
-        line-height: 1;
-        letter-spacing: 0.36em;
-        text-transform: uppercase;
-    }
-    .flag .sub {
-        display: block;
-        margin-top: 6px;
-        font-weight: 400;
-        font-size: 11px;
-        line-height: 1;
-        letter-spacing: 0.23em;
-        color: #7a7160;
-    }
-    .dayblock {
-        text-align: right;
-    }
-    .dayblock .weekday {
-        font-weight: 700;
-        font-size: 13px;
-        line-height: 1;
-        letter-spacing: 0.30em;
-        text-transform: uppercase;
-        color: #a02a16;
-    }
-    .dayblock .bigday {
-        margin-top: 3px;
-        font-weight: 700;
-        font-size: 72px;
-        line-height: 0.92;
-        letter-spacing: -0.035em;
-    }
-    .dayblock .year {
-        margin-top: 4px;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 1;
-        letter-spacing: 0.38em;
-        color: #7a7160;
-    }
-
-    /* ------------------------------------------------------------------- lead
-       The day's lead is reversed out of the paper: black field, cream type.
-       Beside it, four figures from four other stories, for scale. */
-    .lead {
-        margin-top: 9px;
-        padding: 12px 18px 13px;
-        background: #16130f;
+    /* -------------------------------------------------------------- flag band
+       Date block, masthead, standfirst; three figures on the right. */
+    .hero {
+        background: #101828;
         color: #f4f1e8;
+        padding: 13px 24px 12px;
         display: grid;
-        grid-template-columns: 1fr 178px;
-        gap: 16px;
+        grid-template-columns: 104px 1fr 232px;
+        gap: 14px;
+        align-items: start;
     }
-    .kicker {
+    .datebox {
+        background: #b3271b;
+        padding: 8px 8px 9px;
+        text-align: center;
+    }
+    .datebox .m {
         font-weight: 700;
-        font-size: 12px;
+        font-size: 10px;
         line-height: 1;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        color: #e2603f;
+        letter-spacing: 0.26em;
+        color: #f6d9d2;
     }
-    .lead h1 {
-        margin-top: 6px;
+    .datebox .d {
+        margin: 2px 0 4px;
         font-weight: 700;
-        font-size: 44px;
-        line-height: 1.02;
-        letter-spacing: -0.026em;
+        font-size: 48px;
+        line-height: 0.86;
+        letter-spacing: -0.04em;
     }
-    .lead h1 em {
-        font-style: italic;
-        font-weight: 400;
-    }
-    .lead .standfirst {
-        margin-top: 7px;
-        max-width: 620px;
-        font-weight: 400;
-        font-size: 13.6px;
-        line-height: 1.34;
-        color: #cfc8bb;
-    }
-    .lead .standfirst b {
+    .datebox .w {
         font-weight: 700;
-        color: #f4f1e8;
+        font-size: 7.5px;
+        line-height: 1;
+        letter-spacing: 0.14em;
+        color: #f6d9d2;
     }
-    .figures {
-        padding-left: 14px;
-        border-left: 1px solid #4a4438;
-    }
-    .figures h2 {
-        margin-bottom: 7px;
+    .mast .k {
         font-weight: 700;
         font-size: 9px;
         line-height: 1;
-        letter-spacing: 0.22em;
+        letter-spacing: 0.26em;
         text-transform: uppercase;
-        color: #e2603f;
+        color: #8fb4d9;
     }
-    .figures .num {
+    .mast h1 {
+        margin-top: 4px;
         font-weight: 700;
-        font-size: 23px;
+        font-size: 43px;
+        line-height: 1;
+        letter-spacing: -0.028em;
+    }
+    .mast .sub {
+        margin-top: 5px;
+        font-size: 10.5px;
+        line-height: 1.4;
+        font-style: italic;
+        color: #b9c2cf;
+    }
+    .mast .sub b {
+        font-style: normal;
+        font-weight: 700;
+        color: #f4f1e8;
+    }
+    .stats {
+        border-left: 1px solid #37455c;
+        padding-left: 12px;
+    }
+    .stats h2 {
+        margin-bottom: 6px;
+        font-weight: 700;
+        font-size: 8px;
+        line-height: 1;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #8fb4d9;
+    }
+    .stats .row {
+        margin-bottom: 6px;
+    }
+    .stats .n {
+        font-weight: 700;
+        font-size: 20px;
         line-height: 1;
         letter-spacing: -0.03em;
         color: #f4f1e8;
     }
-    .figures .cap {
-        margin: 3px 0 10px;
-        font-weight: 400;
-        font-size: 10.5px;
-        line-height: 1.25;
-        color: #b3ab9c;
-    }
-
-    /* ----------------------------------------------------------- figures strip
-       Six numbers, six stories, no commentary: the day's arithmetic. */
-    .strip {
-        display: flex;
-        border-bottom: 3px solid #16130f;
-    }
-    .strip .cell {
-        flex: 1;
-        padding: 9px 11px 9px 0;
-    }
-    .strip .cell + .cell {
-        padding-left: 12px;
-        border-left: 1px solid #c8c0ac;
-    }
-    .strip .num {
-        font-weight: 700;
-        font-size: 27px;
-        line-height: 1;
-        letter-spacing: -0.035em;
-    }
-    .strip .cap {
-        margin-top: 4px;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 1.26;
-        color: #4e4739;
-    }
-
-    /* ---------------------------------------------------------------- the grid
-       Four columns, region heads in red. One story to a line of bold type,
-       one line of fact under it, nothing else. */
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 0 15px;
-        padding-top: 8px;
-    }
-    .col + .col {
-        padding-left: 15px;
-        border-left: 1px solid #c8c0ac;
-    }
-    .block {
-        margin-bottom: 7px;
-    }
-    .block h3 {
-        margin-bottom: 5px;
-        padding-bottom: 3px;
-        border-bottom: 1px solid #d8d1c0;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 1;
-        letter-spacing: 0.19em;
-        text-transform: uppercase;
-        color: #a02a16;
-    }
-    .story {
-        margin-bottom: 5px;
-    }
-    .story .head {
-        font-weight: 700;
-        font-size: 15px;
-        line-height: 1.12;
-        letter-spacing: -0.005em;
-    }
-    .story .note {
-        margin-top: 1px;
-        font-weight: 400;
-        font-size: 10.1px;
-        line-height: 1.25;
-        color: #46402f;
-    }
-    .story .note b {
-        font-weight: 700;
-        color: #16130f;
-    }
-
-    /* --------------------------------------------------------------- also strip
-       Four one-line teasers for the beats that live outside the map. */
-    .also {
-        display: flex;
-        gap: 13px;
+    .stats .l {
         margin-top: 2px;
-        padding-top: 6px;
-        border-top: 1px solid #c8c0ac;
-    }
-    .also .beat {
-        flex: 1;
-    }
-    .also .label {
-        font-weight: 700;
-        font-size: 8.5px;
-        line-height: 1;
-        letter-spacing: 0.20em;
-        text-transform: uppercase;
-        color: #a02a16;
-    }
-    .also .teaser {
-        margin-top: 2px;
-        font-weight: 700;
-        font-size: 13.5px;
+        font-size: 8px;
         line-height: 1.2;
+        color: #93a0b2;
     }
 
-    /* ------------------------------------------------------------------ footer */
-    .foot {
+    /* ------------------------------------------------------------- region tabs
+       One strip, seven desks, each with its own colour and card count. */
+    .tabs {
         display: flex;
-        justify-content: space-between;
-        margin-top: 6px;
-        padding-top: 5px;
-        border-top: 3px solid #16130f;
-        font-weight: 400;
-        font-size: 10px;
+        background: #1b2436;
+        color: #f4f1e8;
+    }
+    .tab {
+        flex: 1;
+        padding: 5px 10px;
+        font-weight: 700;
+        font-size: 8px;
+        line-height: 1;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        border-right: 1px solid #2c3850;
+    }
+    .tab b {
+        float: right;
+        color: #f0a898;
+    }
+    .tab.me { background: #8a2418; }
+    .tab.as { background: #4a2f6b; }
+    .tab.eu { background: #1f4d7a; }
+    .tab.am { background: #1e5a45; }
+    .tab.sp { background: #6b2f52; }
+    .tab.af { background: #7a4a1e; }
+    .tab.fl { background: #2c3850; }
+
+    /* --------------------------------------------------------------- the cards
+       Four columns of three. Each card is a drawn tile, a red label, one
+       bold headline and one line of fact — nothing else. */
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0 12px;
+        padding: 9px 24px 0;
+    }
+    .col {
+        position: relative;
+    }
+    /* Rules sit in the gutter, so every column keeps the same content width. */
+    .col + .col::before {
+        content: "";
+        position: absolute;
+        left: -6.5px;
+        top: 0;
+        bottom: 0;
+        border-left: 1px solid #cdc5b1;
+    }
+    .card {
+        margin-bottom: 22px;
+    }
+    .ill {
+        display: block;
+        width: 100%;
+        height: 96px;
+        margin-bottom: 6px;
+    }
+    .tag {
+        font-weight: 700;
+        font-size: 8.2px;
         line-height: 1;
         letter-spacing: 0.16em;
         text-transform: uppercase;
+        color: #a02a16;
+    }
+    .card h3 {
+        margin-top: 4px;
+        font-weight: 700;
+        font-size: 18.5px;
+        line-height: 1.13;
+        letter-spacing: -0.014em;
+    }
+    .card p {
+        margin-top: 3px;
+        font-size: 10px;
+        line-height: 1.3;
+        color: #443e33;
+    }
+    .card p b {
+        font-weight: 700;
+        color: #141210;
+    }
+
+    /* ------------------------------------------------------------ figures band
+       Six numbers from six other stories, ruled off above and below: the
+       day's arithmetic, set as a band between the grid and the teasers. */
+    .figures {
+        display: flex;
+        margin: 6px 24px 0;
+        padding: 9px 0 8px;
+        border-top: 1px solid #cdc5b1;
+        border-bottom: 1px solid #cdc5b1;
+    }
+    .figures .cell {
+        flex: 1;
+        padding-right: 10px;
+    }
+    .figures .cell + .cell {
+        padding-left: 11px;
+        border-left: 1px solid #d8d1c0;
+    }
+    .figures .num {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 1;
+        letter-spacing: -0.035em;
+    }
+    .figures .cap {
+        margin-top: 4px;
+        font-size: 10.4px;
+        line-height: 1.24;
         color: #4e4739;
     }
-    .foot .mark {
+
+    /* ------------------------------------------------------------- foot strips */
+    .strip {
+        display: flex;
+        margin-top: auto;
+        padding: 0 24px;
+        border-top: 3px solid #141210;
+    }
+    .beat {
+        flex: 1;
+        padding: 6px 11px 7px 0;
+        border-right: 1px solid #cdc5b1;
+    }
+    .beat:last-child {
+        border-right: none;
+    }
+    .beat .k {
+        font-weight: 700;
+        font-size: 7.5px;
+        line-height: 1;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        color: #a02a16;
+    }
+    .beat .h {
+        margin-top: 2px;
+        font-weight: 700;
+        font-size: 11.5px;
+        line-height: 1.16;
+    }
+    .foot {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 24px 7px;
+    }
+    .foot div {
+        font-size: 8.5px;
+        line-height: 1;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #4e4739;
+    }
+    .foot .r {
         font-weight: 700;
         color: #a02a16;
     }
@@ -278,38 +293,346 @@
 
 <div class="sheet">
 
-    <header class="masthead">
-        <div class="flag">
-            The World
-            <span class="sub">7 regions &middot; 24 stories &middot; one page</span>
+    <!-- ============================================================== flag band -->
+    <div class="hero">
+        <div class="datebox">
+            <div class="m">NOV</div>
+            <div class="d">18</div>
+            <div class="w">WED &middot; 2026</div>
         </div>
-        <div class="dayblock">
-            <div class="weekday">Wednesday</div>
-            <div class="bigday">18 November</div>
-            <div class="year">2026</div>
+        <div class="mast">
+            <div class="k">The World &middot; One Day &middot; All Regions</div>
+            <h1>Wednesday 18 November 2026</h1>
+            <div class="sub">Everything on this page happened, or was first reported, that day. <b>Twelve stories, seven desks, one sheet.</b></div>
         </div>
-    </header>
-
-    <section class="lead">
-        <div>
-            <div class="kicker">Middle East &middot; Strait of Hormuz</div>
-            <h1>Iran strikes Kuwait and Bahrain, <em>after US jets bomb Qeshm</em></h1>
-            <p class="standfirst">Iranian drones targeted the US&rsquo;s <b>Ali Al-Salem air base</b> in Kuwait, and Bahrain said it fended off a fourth attack in six days, after American aircraft struck a missile site on <b>Qeshm Island</b>. Saudi Arabia intercepted a Houthi cruise missile bound for Riyadh; an <b>ADNOC</b> tanker was hit. Qatar called it a dangerous escalation.</p>
-        </div>
-        <div class="figures">
+        <div class="stats">
             <h2>The day in numbers</h2>
-            <div class="num">$115.8bn</div>
-            <div class="cap">Nvidia&rsquo;s quarter, up 103% as Huang&rsquo;s board rules out his return</div>
-            <div class="num">$81.3bn</div>
-            <div class="cap">raised by Anthropic&rsquo;s IPO at $83, the largest debut</div>
-            <div class="num">&euro;45bn</div>
-            <div class="cap">joint-debt loan proposed for Kyiv</div>
-            <div class="num">251&ndash;11</div>
-            <div class="cap">Jeffries wins the Democratic caucus</div>
+            <div class="row">
+                <div class="n">$115.8bn</div>
+                <div class="l">Nvidia&rsquo;s quarter, up 103% in a year</div>
+            </div>
+            <div class="row">
+                <div class="n">$81.3bn</div>
+                <div class="l">raised by Anthropic&rsquo;s IPO at $83 a share</div>
+            </div>
+            <div class="row">
+                <div class="n">&euro;45bn</div>
+                <div class="l">joint-debt loan proposed for Kyiv</div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <div class="strip">
+    <div class="tabs">
+        <div class="tab me">Mid East<b>2</b></div>
+        <div class="tab as">Asia<b>2</b></div>
+        <div class="tab eu">Europe<b>2</b></div>
+        <div class="tab am">Americas<b>1</b></div>
+        <div class="tab sp">Sport<b>1</b></div>
+        <div class="tab af">Africa<b>1</b></div>
+        <div class="tab fl">Fields<b>3</b></div>
+    </div>
+
+    <div class="cards">
+
+        <!-- ------------------------------------------------------- column one -->
+        <div class="col">
+
+            <!-- 1 Gulf: sea band, tanker, reticle, drone on a dashed run-in -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#101828"/>
+                    <rect y="62" width="240" height="34" fill="#16324f"/>
+                    <rect y="62" width="240" height="2" fill="#2f5f8f"/>
+                    <path d="M24 62h80l-10 15H34z" fill="#c9d4e2"/>
+                    <rect x="52" y="47" width="24" height="15" fill="#c9d4e2"/>
+                    <rect x="58" y="40" width="7" height="7" fill="#e0663f"/>
+                    <path d="M24 62h80" stroke="#8fb4d9" stroke-width="2"/>
+                    <circle cx="186" cy="26" r="14" fill="none" stroke="#b3271b" stroke-width="2"/>
+                    <circle cx="186" cy="26" r="5" fill="none" stroke="#e0663f" stroke-width="1.4"/>
+                    <circle cx="186" cy="26" r="1.6" fill="#b3271b"/>
+                    <path d="M186 6v6M186 40v6M166 26h6M200 26h6" stroke="#e0663f" stroke-width="1.8"/>
+                    <path d="M96 20l22 9-22 6-8-8z" fill="#c9d4e2"/>
+                    <path d="M120 28c18-7 36-7 52-2" fill="none" stroke="#e0663f" stroke-width="1.4" stroke-dasharray="4 3"/>
+                </svg>
+                <div class="tag">Mid East &middot; Strait of Hormuz</div>
+                <h3>Iran strikes Kuwait and Bahrain, after US jets bomb Qeshm</h3>
+                <p>Drones hit <b>Ali Al-Salem air base</b>; an <b>ADNOC</b> tanker was hit.</p>
+            </div>
+
+            <!-- 2 Gaza: flat rooftop line, a radar sweep, one projectile -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#e8ddc8"/>
+                    <rect y="78" width="240" height="18" fill="#c9b795"/>
+                    <rect y="78" width="240" height="1.5" fill="#a8946f"/>
+                    <rect x="10" y="52" width="34" height="26" fill="#8c7a5c"/>
+                    <rect x="48" y="40" width="26" height="38" fill="#a8946f"/>
+                    <rect x="78" y="58" width="30" height="20" fill="#7b6a4e"/>
+                    <rect x="112" y="46" width="26" height="32" fill="#9c8a68"/>
+                    <rect x="20" y="58" width="6" height="7" fill="#3f3a30"/>
+                    <rect x="30" y="58" width="6" height="7" fill="#3f3a30"/>
+                    <rect x="56" y="50" width="5" height="8" fill="#3f3a30"/>
+                    <rect x="65" y="50" width="5" height="8" fill="#3f3a30"/>
+                    <rect x="120" y="56" width="5" height="7" fill="#3f3a30"/>
+                    <circle cx="188" cy="50" r="28" fill="none" stroke="#5b4a33" stroke-width="1.2" opacity="0.45"/>
+                    <circle cx="188" cy="50" r="15" fill="none" stroke="#5b4a33" stroke-width="1.2" opacity="0.45"/>
+                    <path d="M188 50L188 22A28 28 0 0 1 212 36Z" fill="#5b4a33" opacity="0.3"/>
+                    <path d="M188 50L212 36" stroke="#5b4a33" stroke-width="1.4"/>
+                    <circle cx="188" cy="50" r="2" fill="#5b4a33"/>
+                    <path d="M158 30l-40 9 40 9-6-9z" fill="#3a4450"/>
+                    <path d="M158 30l8-6v9h-8zM158 48l8 6v-9h-8z" fill="#3a4450"/>
+                    <path d="M110 33l8 6-8 6z" fill="#b3271b"/>
+                    <path d="M96 34l8 5-8 5" fill="none" stroke="#b3271b" stroke-width="1.4" opacity="0.65"/>
+                    <path d="M84 36l6 3-6 3" fill="none" stroke="#b3271b" stroke-width="1.2" opacity="0.4"/>
+                </svg>
+                <div class="tag">Mid East &middot; Gaza</div>
+                <h3>Israel opens its first central Gaza operation since the truce</h3>
+                <p>Families displaced; a first since October 2025.</p>
+            </div>
+
+            <!-- 3 APEC: pole, two flags, motorcade on the tarmac -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#cfd9e6"/>
+                    <rect y="58" width="240" height="38" fill="#a8b4c2"/>
+                    <rect y="58" width="240" height="1.5" fill="#7d8a99"/>
+                    <rect x="117" y="12" width="5" height="58" fill="#5b5f66"/>
+                    <circle cx="119.5" cy="10" r="3" fill="#f0c060"/>
+                    <rect x="64" y="17" width="50" height="21" fill="#c9352a"/>
+                    <circle cx="80" cy="27.5" r="4" fill="#f0c060"/>
+                    <path d="M70 27.5h20M80 17.5v20" stroke="#f0c060" stroke-width="1.2" opacity="0.55"/>
+                    <rect x="125" y="17" width="48" height="21" fill="#1d3f7a"/>
+                    <path d="M125 24h48M125 31h48" stroke="#e9e4d6" stroke-width="2.2"/>
+                    <path d="M28 88v-8c0-3 3-5 6-5h44c3 0 6 2 7 5l2 8z" fill="#2b323c"/>
+                    <rect x="44" y="78" width="26" height="7" fill="#8fb4d9" opacity="0.5"/>
+                    <circle cx="42" cy="88" r="3.6" fill="#141210"/>
+                    <circle cx="74" cy="88" r="3.6" fill="#141210"/>
+                    <path d="M164 88v-7c0-2 2-4 4-4h34c2 0 4 2 4 4v7z" fill="#3a4450"/>
+                    <rect x="172" y="80" width="22" height="6" fill="#8fb4d9" opacity="0.4"/>
+                    <circle cx="172" cy="88" r="3.2" fill="#141210"/>
+                    <circle cx="196" cy="88" r="3.2" fill="#141210"/>
+                    <path d="M104 88v-5c0-2 2-3 4-3h14c2 0 3 1 3 3v5z" fill="#5b5f66"/>
+                    <circle cx="109" cy="88" r="2.8" fill="#141210"/>
+                    <circle cx="121" cy="88" r="2.8" fill="#141210"/>
+                </svg>
+                <div class="tag">Asia-Pacific &middot; APEC, Shenzhen</div>
+                <h3>Xi welcomes Trump to Shenzhen; Putin joins the banquet</h3>
+                <p>No G7 leader took the opening stage of the CEO summit.</p>
+            </div>
+        </div>
+
+        <!-- ------------------------------------------------------- column two -->
+        <div class="col">
+
+            <!-- 4 Dhaka: mill skyline at night, one block left red-lit -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#1c2b24"/>
+                    <rect y="84" width="240" height="12" fill="#12201a"/>
+                    <rect x="10" y="44" width="34" height="40" fill="#4a6b57"/>
+                    <rect x="48" y="30" width="30" height="54" fill="#5f8369"/>
+                    <rect x="82" y="52" width="34" height="32" fill="#456353"/>
+                    <rect x="120" y="38" width="30" height="46" fill="#b3271b"/>
+                    <rect x="120" y="38" width="30" height="5" fill="#e0663f"/>
+                    <rect x="154" y="24" width="32" height="60" fill="#6b9077"/>
+                    <rect x="190" y="48" width="40" height="36" fill="#4f7259"/>
+                    <rect x="96" y="18" width="6" height="14" fill="#3d5a49"/>
+                    <rect x="18" y="52" width="5" height="5" fill="#c9d4e2" opacity="0.55"/>
+                    <rect x="29" y="52" width="5" height="5" fill="#c9d4e2" opacity="0.35"/>
+                    <rect x="55" y="40" width="5" height="5" fill="#c9d4e2" opacity="0.45"/>
+                    <rect x="65" y="40" width="5" height="5" fill="#f0c060" opacity="0.6"/>
+                    <rect x="162" y="34" width="5" height="5" fill="#f0c060" opacity="0.5"/>
+                    <rect x="172" y="34" width="5" height="5" fill="#c9d4e2" opacity="0.35"/>
+                    <rect x="198" y="58" width="5" height="5" fill="#c9d4e2" opacity="0.35"/>
+                </svg>
+                <div class="tag">Asia-Pacific &middot; Bangladesh</div>
+                <h3>Garment workers block the Dhaka&ndash;Mymensingh highway</h3>
+                <p>Tear gas and stun grenades; <b>55 factories</b> shut, about <b>300</b> held.</p>
+            </div>
+
+            <!-- 5 Kerch: span on two piers, plume rising at the break -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#7d858f"/>
+                    <rect y="64" width="240" height="32" fill="#3a4450"/>
+                    <rect y="64" width="240" height="1.5" fill="#5a636f"/>
+                    <path d="M0 52h96l10 7H0z" fill="#b9c2cf"/>
+                    <path d="M144 59l10-7h86v7z" fill="#b9c2cf"/>
+                    <path d="M0 52h96M144 52h96" stroke="#cfd6e0" stroke-width="2"/>
+                    <path d="M92 59l8-7M148 52l-8 7" stroke="#5a636f" stroke-width="2"/>
+                    <rect x="44" y="59" width="9" height="37" fill="#a9b3bf"/>
+                    <rect x="187" y="59" width="9" height="37" fill="#a9b3bf"/>
+                    <rect x="46" y="14" width="6" height="45" fill="#cfd6e0"/>
+                    <rect x="188" y="14" width="6" height="45" fill="#cfd6e0"/>
+                    <path d="M49 14L10 52M49 14l-22 38M49 14l13 38M191 14l22 38M191 14l-13 38M191 14l38 38" stroke="#8f99a6" stroke-width="1"/>
+                    <path d="M112 56c-9-9-9-18-2-25 3 7 6 2 7-4 7 10 6 21-1 29z" fill="#e0663f"/>
+                    <path d="M116 56c-5-7-5-13-1-17 1 5 4 1 5-3 3 7 2 14-1 20z" fill="#f0a898"/>
+                    <circle cx="120" cy="52" r="6" fill="#f0c060"/>
+                    <path d="M104 68l8-7M130 68l-8-7M118 82l4-8" stroke="#b9c2cf" stroke-width="2"/>
+                </svg>
+                <div class="tag">Europe &middot; Ukraine</div>
+                <h3>Kerch Bridge struck a third time in four days</h3>
+                <p>Rail halted; Moscow closed the crossing.</p>
+            </div>
+
+            <!-- 6 COP31: the curve as a bar series, cooling blues -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#ece6d8"/>
+                    <path d="M20 78h200" stroke="#c3b498" stroke-width="1.4"/>
+                    <path d="M20 78V12" stroke="#c3b498" stroke-width="1.4"/>
+                    <rect x="28" y="60" width="26" height="18" fill="#1f4d7a"/>
+                    <rect x="60" y="52" width="26" height="26" fill="#2f6aa8"/>
+                    <rect x="92" y="42" width="26" height="36" fill="#4a86c4"/>
+                    <rect x="124" y="50" width="26" height="28" fill="#3f78b4"/>
+                    <rect x="156" y="30" width="26" height="48" fill="#6f9fd0"/>
+                    <rect x="188" y="18" width="26" height="60" fill="#8fb4d9"/>
+                    <path d="M20 34h200" stroke="#b3271b" stroke-width="1.2" stroke-dasharray="5 4"/>
+                </svg>
+                <div class="tag">Europe &middot; Climate, COP31</div>
+                <h3>COP31 deadlocks over a tax on fossil fuels</h3>
+                <p>Britain backs sector levies on high emitters.</p>
+            </div>
+        </div>
+
+        <!-- ----------------------------------------------------- column three -->
+        <div class="col">
+
+            <!-- 7 Voyager: Earth, sun, probe, and the one-light-day tick -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#0d1220"/>
+                    <rect x="16" y="34" width="26" height="26" fill="#1e5a45"/>
+                    <path d="M20 39h9l-2 5 3 3-4 9-6-3zM33 42l5 2-1 6-4-1zM24 56l5 3-2 5-4-2z" fill="#6b9077"/>
+                    <circle cx="92" cy="46" r="9" fill="#f0c060"/>
+                    <path d="M44 74h124" stroke="#8fb4d9" stroke-width="1" stroke-dasharray="3 3"/>
+                    <path d="M44 67v14M168 67v14" stroke="#8fb4d9" stroke-width="1.6"/>
+                    <rect x="176" y="41" width="15" height="10" fill="#c9d4e2"/>
+                    <path d="M191 34l20 12-20 12z" fill="#e8ddc8"/>
+                    <path d="M176 41l-12-5M176 51l-12 5" stroke="#c9d4e2" stroke-width="1.4"/>
+                </svg>
+                <div class="tag">Science &middot; Voyager 1</div>
+                <h3>Voyager 1 reaches one light-day from Earth</h3>
+                <p>Launched 1977: the furthest object ever flown.</p>
+            </div>
+
+            <!-- 8 Sotheby's: gilt frame, blossom branches, the auction paddle -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#ece6d8"/>
+                    <rect x="38" y="8" width="106" height="80" fill="#b5892f"/>
+                    <rect x="45" y="15" width="92" height="66" fill="#e8ddc8"/>
+                    <path d="M53 72c14-11 17-25 29-31s25-11 32-7" fill="none" stroke="#4a6b3c" stroke-width="2.4"/>
+                    <path d="M70 57c9-2 15-9 19-17" fill="none" stroke="#4a6b3c" stroke-width="1.8"/>
+                    <circle cx="86" cy="39" r="4.4" fill="#f0c060"/>
+                    <circle cx="101" cy="33" r="3.6" fill="#e0663f"/>
+                    <circle cx="112" cy="41" r="3" fill="#c9d4e2"/>
+                    <circle cx="74" cy="53" r="3.2" fill="#f0a898"/>
+                    <rect x="166" y="28" width="32" height="30" fill="#7a6a4a"/>
+                    <rect x="172" y="34" width="20" height="10" fill="#e8ddc8"/>
+                    <rect x="176" y="58" width="10" height="26" fill="#5b4a33"/>
+                </svg>
+                <div class="tag">Culture &middot; Auctions</div>
+                <h3>A Van Gogh sells for a record $190.4m</h3>
+                <p><i>Blossoming Chestnut Trees</i> (1890), past 2022&rsquo;s $117.2m.</p>
+            </div>
+
+            <!-- 9 Nvidia: the package, the die, pins down both sides -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#141210"/>
+                    <rect x="66" y="14" width="108" height="68" fill="#b5892f"/>
+                    <rect x="66" y="14" width="108" height="3" fill="#d8b45a"/>
+                    <rect x="76" y="22" width="88" height="52" fill="#2a2b1c"/>
+                    <rect x="88" y="30" width="64" height="36" fill="#3f4030"/>
+                    <path d="M88 48h64M120 30v36" stroke="#c9a53c" stroke-width="1.2" opacity="0.55"/>
+                    <path d="M54 22h12M54 32h12M54 42h12M54 52h12M54 62h12M54 72h12" stroke="#c9a53c" stroke-width="4"/>
+                    <path d="M174 22h12M174 32h12M174 42h12M174 52h12M174 62h12M174 72h12" stroke="#c9a53c" stroke-width="4"/>
+                    <rect x="66" y="79" width="108" height="3" fill="#8a6a2c"/>
+                </svg>
+                <div class="tag">Markets &middot; Nvidia</div>
+                <h3>Revenue doubles to $115.8bn without Huang</h3>
+                <p>Up <b>103%</b> in a year; the board rules out his return, and <b>Colette Kress</b> stays interim.</p>
+            </div>
+        </div>
+
+        <!-- ------------------------------------------------------ column four -->
+        <div class="col">
+
+            <!-- 10 Caracas: the tricolour, and a pin dropped on the map -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#141210"/>
+                    <rect y="84" width="240" height="12" fill="#0b0906"/>
+                    <rect x="54" y="12" width="4" height="66" fill="#5b5f66"/>
+                    <rect x="60" y="16" width="46" height="10" fill="#f0c060"/>
+                    <rect x="60" y="26" width="46" height="10" fill="#1f4d7a"/>
+                    <rect x="60" y="36" width="46" height="10" fill="#b3271b"/>
+                    <path d="M170 16c-11 0-20 9-20 20 0 15 20 30 20 30s20-15 20-30c0-11-9-20-20-20z" fill="#b3271b"/>
+                    <circle cx="170" cy="36" r="7" fill="#f2efe6"/>
+                </svg>
+                <div class="tag">Americas &middot; Venezuela</div>
+                <h3>Hegseth signs a military pact in Caracas</h3>
+                <p>Joint training and intelligence sharing with <b>Delcy Rodr&iacute;guez</b>; a C-130 to Colombia.</p>
+            </div>
+
+            <!-- 11 Cricket: stumps, the keeper's glove, the ball swinging past -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#1c2b24"/>
+                    <rect y="72" width="240" height="24" fill="#2f4a36"/>
+                    <rect y="72" width="240" height="1.5" fill="#6b9077"/>
+                    <rect x="86" y="60" width="34" height="6" fill="#f2efe6"/>
+                    <rect x="92" y="26" width="4.5" height="34" fill="#e8ddc8"/>
+                    <rect x="101" y="26" width="4.5" height="34" fill="#e8ddc8"/>
+                    <rect x="110" y="26" width="4.5" height="34" fill="#e8ddc8"/>
+                    <rect x="90" y="22" width="10" height="3.5" fill="#f2efe6"/>
+                    <rect x="101" y="22" width="10" height="3.5" fill="#f2efe6"/>
+                    <path d="M162 44c0-4 3-7 7-7h20c5 0 9 4 9 9v31h-36z" fill="#c9d4e2"/>
+                    <path d="M166 38h30v9h-30z" fill="#a9b8c9"/>
+                    <rect x="168" y="20" width="7" height="19" rx="3.5" fill="#c9d4e2"/>
+                    <rect x="178" y="16" width="7" height="23" rx="3.5" fill="#c9d4e2"/>
+                    <rect x="188" y="20" width="7" height="19" rx="3.5" fill="#c9d4e2"/>
+                    <rect x="160" y="66" width="40" height="8" fill="#8fb4d9"/>
+                    <path d="M148 40c10-12 24-14 34-9" fill="none" stroke="#e0663f" stroke-width="1.4" stroke-dasharray="3 3"/>
+                    <circle cx="150" cy="40" r="5" fill="#b3271b"/>
+                </svg>
+                <div class="tag">Sport &middot; Cricket</div>
+                <h3>Litton Das sets a wicketkeeping world record</h3>
+                <p>Six catches and two stumpings in one Test innings, in Johannesburg.</p>
+            </div>
+
+            <!-- 12 ANC: the benches in sectional semicircle, green and gold -->
+            <div class="card">
+                <svg class="ill" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                    <rect width="240" height="96" fill="#1c2b24"/>
+                    <rect y="90" width="240" height="6" fill="#101828"/>
+                    <path d="M39.7 71.4A84 84 0 0 1 200.3 71.4L188.9 74.9A72 72 0 0 0 51.1 74.9Z" fill="#7a4a1e"/>
+                    <path d="M39.7 71.4A84 84 0 0 1 200.3 71.4L197.9 72.2A81.5 81.5 0 0 0 42.1 72.2Z" fill="#f2efe6" opacity="0.28"/>
+                    <path d="M53.1 75.5A70 70 0 0 1 186.9 75.5L174.5 79.3A57 57 0 0 0 65.5 79.3Z" fill="#6b9077"/>
+                    <path d="M53.1 75.5A70 70 0 0 1 186.9 75.5L184.6 76.3A67.5 67.5 0 0 0 55.4 76.3Z" fill="#f2efe6" opacity="0.28"/>
+                    <path d="M67.4 79.9A55 55 0 0 1 172.6 79.9L160.2 83.7A42 42 0 0 0 79.8 83.7Z" fill="#f0c060"/>
+                    <path d="M67.4 79.9A55 55 0 0 1 172.6 79.9L170.2 80.7A52.5 52.5 0 0 0 69.8 80.7Z" fill="#f2efe6" opacity="0.28"/>
+                    <path d="M81.7 84.3A40 40 0 0 1 158.3 84.3L146.8 87.8A28 28 0 0 0 93.2 87.8Z" fill="#6b9077"/>
+                    <path d="M81.7 84.3A40 40 0 0 1 158.3 84.3L155.9 85.0A37.5 37.5 0 0 0 84.1 85.0Z" fill="#f2efe6" opacity="0.28"/>
+                    <path d="M120.0 96.0L66.4 21.2A92 92 0 0 1 70.7 18.3L120.0 96.0Z" fill="#1c2b24"/>
+                    <path d="M120.0 96.0L117.4 4.0A92 92 0 0 1 122.6 4.0L120.0 96.0Z" fill="#1c2b24"/>
+                    <path d="M120.0 96.0L169.3 18.3A92 92 0 0 1 173.6 21.2L120.0 96.0Z" fill="#1c2b24"/>
+                    <rect x="96" y="84" width="48" height="7" fill="#b5892f"/>
+                    <rect x="96" y="82" width="48" height="2.5" fill="#f0c060"/>
+                    <rect x="104" y="74" width="10" height="8" fill="#6b9077"/>
+                    <rect x="126" y="74" width="10" height="8" fill="#6b9077"/>
+                </svg>
+                <div class="tag">Africa &middot; South Africa</div>
+                <h3>ANC postpones its coalition briefing</h3>
+                <p>Called off the night before, citing talks; a d&eacute;marche to <b>Femi Fani-Kayode</b>.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================================== arithmetic -->
+    <div class="figures">
         <div class="cell">
             <div class="num">$190.4m</div>
             <div class="cap">a Van Gogh record at Sotheby&rsquo;s</div>
@@ -319,7 +642,7 @@
             <div class="cap">Voyager 1&rsquo;s distance from Earth</div>
         </div>
         <div class="cell">
-            <div class="num">৳30,000</div>
+            <div class="num">&#2547;30,000</div>
             <div class="cap">the wage Dhaka&rsquo;s garment workers demand</div>
         </div>
         <div class="cell">
@@ -328,7 +651,7 @@
         </div>
         <div class="cell">
             <div class="num">15m</div>
-            <div class="cap">files Deutsche Bank leaked</div>
+            <div class="cap">files in Deutsche Bank&rsquo;s leak</div>
         </div>
         <div class="cell">
             <div class="num">55</div>
@@ -336,133 +659,29 @@
         </div>
     </div>
 
-    <div class="grid">
-
-        <div class="col">
-            <div class="block">
-                <h3>Middle East</h3>
-                <div class="story">
-                    <div class="head">Israel opens its first central Gaza operation since the truce</div>
-                    <div class="note">Families displaced; a first since October 2025.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Settlers shoot dead a grandmother of 72</div>
-                    <div class="note"><b>Fadda Mohammed Fheidat</b>, outside her home near Jericho. Britain sanctioned 8 Israeli construction firms and a settler group; Australia 3 people and 4 organisations.</div>
-                </div>
-            </div>
-            <div class="block">
-                <h3>South Asia</h3>
-                <div class="story">
-                    <div class="head">Army kills a militant commander at a Kulgam mosque</div>
-                    <div class="note">He had escaped a firefight two days earlier.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Garment workers block the Dhaka&ndash;Mymensingh highway</div>
-                    <div class="note">Tear gas and stun grenades; <b>55</b> factories shut, about <b>300</b> held.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Arson and bombs sweep BNP property across Bangladesh</div>
-                    <div class="note">Two BNP members killed in Narail; a BNP MP&rsquo;s clinic burned in Gopalganj; <b>Muhammad Yunus</b>&rsquo;s ancestral home set alight in Chattogram.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="block">
-                <h3>Asia-Pacific</h3>
-                <div class="story">
-                    <div class="head">Xi welcomes Trump to Shenzhen; Putin joins the banquet</div>
-                    <div class="note">No G7 leader took the opening stage of the APEC CEO summit.</div>
-                </div>
-            </div>
-            <div class="block">
-                <h3>Africa</h3>
-                <div class="story">
-                    <div class="head">ANC postpones its coalition briefing</div>
-                    <div class="note">Called off the night before, citing talks; Nigeria&rsquo;s new High Commissioner <b>Femi Fani-Kayode</b> was handed a d&eacute;marche.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Museveni courts Dangote for an oil refinery</div>
-                    <div class="note">60,000 barrels a day, plus fertiliser and mining, at Entebbe.</div>
-                </div>
-            </div>
-            <div class="block">
-                <h3>Sport</h3>
-                <div class="story">
-                    <div class="head">Litton Das sets a wicketkeeping world record</div>
-                    <div class="note">Six catches and two stumpings in one Test innings, in Johannesburg.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="block">
-                <h3>Europe</h3>
-                <div class="story">
-                    <div class="head">Von der Leyen proposes a &euro;45bn loan for Kyiv</div>
-                    <div class="note">Joint debt, put as the trilateral met.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Kerch Bridge struck a third time in four days</div>
-                    <div class="note">Rail halted; Moscow closed the crossing.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Deutsche Bank&rsquo;s 15-million-file leak is probed</div>
-                    <div class="note">A German state data regulator opened an inquiry.</div>
-                </div>
-                <div class="story">
-                    <div class="head">UK inflation climbs to a one-year high of 3.6%</div>
-                    <div class="note">October&rsquo;s reading, from 3.5%, as petrol and diesel hit records.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="block">
-                <h3>Americas</h3>
-                <div class="story">
-                    <div class="head">Hegseth signs a military pact in Caracas</div>
-                    <div class="note">Training and intelligence, with <b>Delcy Rodr&iacute;guez</b>; a C-130 to Colombia.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Jeffries closes on the speaker&rsquo;s gavel</div>
-                    <div class="note"><b>251</b> votes to <b>11</b> in the Democratic caucus.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Bukele&rsquo;s forces destroy a Haitian gang leader&rsquo;s house</div>
-                    <div class="note"><b>Jeff Larose</b>, of the Taliban gang; thousands marched in the capital.</div>
-                </div>
-                <div class="story">
-                    <div class="head">Mexican forces arrest &ldquo;El Topo&rdquo; in Zapopan</div>
-                    <div class="note">Three gunmen killed; a Los Deltas cell leader held.</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="also">
+    <!-- ================================================================ teasers -->
+    <div class="strip">
         <div class="beat">
-            <div class="label">Markets</div>
-            <div class="teaser">Nvidia&rsquo;s first quarter without Huang: revenue doubles</div>
+            <div class="k">Americas</div>
+            <div class="h">Jeffries closes on the speaker&rsquo;s gavel, 251 to 11</div>
         </div>
         <div class="beat">
-            <div class="label">Technology</div>
-            <div class="teaser">PlayStation goes dark on the eve of GTA VI</div>
+            <div class="k">Europe</div>
+            <div class="h">Von der Leyen proposes a &euro;45bn loan for Kyiv</div>
         </div>
         <div class="beat">
-            <div class="label">Climate</div>
-            <div class="teaser">COP31 deadlocks over a tax on fossil fuels</div>
+            <div class="k">Africa</div>
+            <div class="h">Museveni courts Dangote for a 60,000-barrel refinery</div>
         </div>
         <div class="beat">
-            <div class="label">Culture</div>
-            <div class="teaser">A Van Gogh sells for a record $190.4m</div>
+            <div class="k">Technology</div>
+            <div class="h">PlayStation goes dark on the eve of GTA VI</div>
         </div>
     </div>
 
     <div class="foot">
         <div>18 November 2026 &middot; events as reported that day, in any time zone</div>
-        <div class="mark">make.fun</div>
+        <div class="r">make.fun</div>
     </div>
 
 </div>
