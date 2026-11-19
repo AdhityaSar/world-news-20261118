@@ -12,8 +12,9 @@ Entry for the make.fun bounty [news-image-20261118](https://make.fun/bounty/news
 called **THE WORLD** for one specific day: **Wednesday 18 November 2026**. It is not a
 generic collage and it is not a summary of a theme — it is one day's world news, the
 stories that were filed and published that day, arranged the way a careful picture
-editor would arrange a front page: one lead, four numbers, nine briefs across three
-regions of the page.
+editor would arrange a front page: one lead, ten figures, and 24 stories across
+seven regions — the Middle East, South Asia, Asia-Pacific, Africa, Europe, the
+Americas and Sport — with Markets, Technology, Climate and Culture beneath them.
 
 Everything the reader needs to place the day is stated plainly on the page itself:
 
