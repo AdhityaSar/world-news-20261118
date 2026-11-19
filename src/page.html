@@ -162,7 +162,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 0 12px;
-        padding: 9px 24px 0;
+        padding: 7px 24px 0;
     }
     .col {
         position: relative;
@@ -177,13 +177,13 @@
         border-left: 1px solid #cdc5b1;
     }
     .card {
-        margin-bottom: 22px;
+        margin-bottom: 7px;
     }
     .ill {
         display: block;
         width: 100%;
-        height: 96px;
-        margin-bottom: 6px;
+        height: 82px;
+        margin-bottom: 5px;
     }
     .tag {
         font-weight: 700;
@@ -194,10 +194,10 @@
         color: #a02a16;
     }
     .card h3 {
-        margin-top: 4px;
+        margin-top: 3px;
         font-weight: 700;
-        font-size: 18.5px;
-        line-height: 1.13;
+        font-size: 17px;
+        line-height: 1.11;
         letter-spacing: -0.014em;
     }
     .card p {
@@ -211,13 +211,59 @@
         color: #141210;
     }
 
+    /* ------------------------------------------------------- also on wednesday
+       The twelve stories the cards had no room for, in the same four columns:
+       one red desk label, one compact headline, twelve to a block. */
+    .also {
+        margin: 3px 24px 0;
+        padding-top: 4px;
+        border-top: 1px solid #cdc5b1;
+    }
+    .also .head {
+        margin-bottom: 4px;
+        line-height: 0;
+    }
+    .also .head b {
+        display: block;
+        font-weight: 700;
+        font-size: 9px;
+        line-height: 1;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #a02a16;
+    }
+    .also .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0 12px;
+    }
+    .also .entry {
+        margin-bottom: 1px;
+    }
+    .also .k {
+        font-weight: 700;
+        font-size: 7px;
+        line-height: 1;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #a02a16;
+    }
+    .also .t {
+        margin-top: 2px;
+        font-weight: 700;
+        font-size: 10.2px;
+        line-height: 1.18;
+        letter-spacing: -0.008em;
+        color: #23201b;
+    }
+
     /* ------------------------------------------------------------ figures band
        Six numbers from six other stories, ruled off above and below: the
        day's arithmetic, set as a band between the grid and the teasers. */
     .figures {
         display: flex;
-        margin: 6px 24px 0;
-        padding: 9px 0 8px;
+        margin: 5px 24px 0;
+        padding: 6px 0 6px;
         border-top: 1px solid #cdc5b1;
         border-bottom: 1px solid #cdc5b1;
     }
@@ -303,7 +349,7 @@
         <div class="mast">
             <div class="k">The World &middot; One Day &middot; All Regions</div>
             <h1>Wednesday 18 November 2026</h1>
-            <div class="sub">Everything on this page happened, or was first reported, that day. <b>Twelve stories, seven desks, one sheet.</b></div>
+            <div class="sub">Everything on this page happened, or was first reported, that day. <b>Twenty-four stories, seven desks, one sheet.</b></div>
         </div>
         <div class="stats">
             <h2>The day in numbers</h2>
@@ -656,6 +702,65 @@
         <div class="cell">
             <div class="num">55</div>
             <div class="cap">factories shut in the Dhaka belt</div>
+        </div>
+    </div>
+
+    <!-- ========================================================= also on wednesday
+         The twelve stories the cards had no room for: same four columns, one
+         red desk label and one compact headline each. -->
+    <div class="also">
+        <div class="head">
+            <b>Also on Wednesday &middot; 18 November 2026</b>
+        </div>
+        <div class="grid">
+            <div class="entry">
+                <div class="k">South Asia &middot; Weather</div>
+                <div class="t">Severe Cyclone Akvan puts Andhra Pradesh and Odisha on warning</div>
+            </div>
+            <div class="entry">
+                <div class="k">Middle East &middot; Yemen</div>
+                <div class="t">Houthi drones hit two pumping stations on the East&ndash;West pipeline</div>
+            </div>
+            <div class="entry">
+                <div class="k">Europe &middot; Migration</div>
+                <div class="t">Five EU states pressed to abandon the Rwanda deportation deal</div>
+            </div>
+            <div class="entry">
+                <div class="k">Africa &middot; Nigeria</div>
+                <div class="t">Doubts grow over Atiku Abubakar&rsquo;s presidential candidacy</div>
+            </div>
+            <div class="entry">
+                <div class="k">Africa &middot; Kenya</div>
+                <div class="t">Kenya&rsquo;s REITs ranked fourth in Africa behind new entrants</div>
+            </div>
+            <div class="entry">
+                <div class="k">Latin America &middot; Mexico</div>
+                <div class="t">Cold Front 6 floods sixteen towns across Veracruz</div>
+            </div>
+            <div class="entry">
+                <div class="k">Haiti &middot; Security</div>
+                <div class="t">Port-au-Prince marches for Salvadoran troops; UN mandate in doubt</div>
+            </div>
+            <div class="entry">
+                <div class="k">United States &middot; Espionage</div>
+                <div class="t">Alleged Russian agent held over spying on a Silicon Valley defence firm</div>
+            </div>
+            <div class="entry">
+                <div class="k">United States &middot; Government</div>
+                <div class="t">NSA&rsquo;s classified NSANet suffers a temporary degradation</div>
+            </div>
+            <div class="entry">
+                <div class="k">United Kingdom &middot; Prices</div>
+                <div class="t">Petrol up 33.2% to a record, pushing UK inflation to a one-year high</div>
+            </div>
+            <div class="entry">
+                <div class="k">Bangladesh &middot; Politics</div>
+                <div class="t">Arsonists burn Muhammad Yunus&rsquo;s ancestral home in Chattogram</div>
+            </div>
+            <div class="entry">
+                <div class="k">Europe &middot; Tech</div>
+                <div class="t">Wildberger: Europe cannot sleep through the AI race</div>
+            </div>
         </div>
     </div>
 
